@@ -49,12 +49,10 @@ public static Scanner lector = new Scanner(System.in);
             int[][] taulerfacil = new int[4][4];
             for (int i = 0; i < taulerfacil.length; i++) {
                 for (int j = 0; j < taulerfacil[i].length; j++) {
-                    taulerfacil[i][j] = (int) (Math.random() * 2);
-                }
-                for (int j = 0; j < taulerfacil[i].length; j++) {
-                    System.out.print(taulerfacil[i][j] + " ");
+                    System.out.print(" * ");
                 }
                 System.out.println();
+
             }
         }
 
@@ -70,6 +68,7 @@ public static Scanner lector = new Scanner(System.in);
                 System.out.println();
             }
         }
+
 
 
 
