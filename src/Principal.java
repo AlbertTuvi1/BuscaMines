@@ -12,7 +12,7 @@ public static Scanner lector = new Scanner(System.in);
     public static void main(String[] args) {
 
     boolean sortir = false;
-
+    int dificultat=0;
     taulellvuit();
 
 do {
@@ -21,7 +21,7 @@ do {
 
     switch (menu){
         case 1:
-            seleccionadificultat();break;
+            seleccionadificultat(dificultat);break;
         case 2:
             System.out.println("Gracies per haver jugat");
             sortir=true;
@@ -92,8 +92,10 @@ do {
         public static int [][] crearTaulell(int dificultat)
         {
         int mines=seleccionadificultat(dificultat);
+        final int MaxNumero=5;
 
 
+        return null;
         }
 
 
