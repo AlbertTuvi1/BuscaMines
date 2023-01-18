@@ -40,9 +40,9 @@ do {
         return opcio;
     }
 
-    public static int seleccionadificultat(){
+    public static int seleccionadificultat(int dificultat){
         boolean dificultatcert = false;
-        int dificultat;
+
         System.out.println("Selecciona la dificultat");
         System.out.println("1.Facil");
         System.out.println("2.Mitja");
@@ -88,11 +88,10 @@ do {
                 }
                 System.out.println();
             }
-
-
-
-
-
+        }
+        public static int [][] crearTaulell(int dificultat)
+        {
+        int mines=seleccionadificultat(dificultat);
 
 
         }
