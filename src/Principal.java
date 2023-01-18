@@ -40,7 +40,7 @@ do {
         return opcio;
     }
 
-    public static void seleccionadificultat(){
+    public static int seleccionadificultat(){
         boolean dificultatcert = false;
         int dificultat;
         System.out.println("Selecciona la dificultat");
@@ -67,6 +67,7 @@ do {
 
             break;
         }
+            return dificultat;
         }
 
         public static void taulellvuit(){
@@ -87,6 +88,8 @@ do {
                 }
                 System.out.println();
             }
+
+
 
 
 
