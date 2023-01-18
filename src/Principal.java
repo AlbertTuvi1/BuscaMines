@@ -6,8 +6,12 @@ public static Scanner lector = new Scanner(System.in);
     public static void main(String[] args) {
 
     boolean sortir = false;
+
+    taulellvuit();
+
 do {
     int menu = menu();
+
 
     switch (menu){
         case 1:
@@ -26,11 +30,12 @@ do {
         int opcio = 0;
         System.out.println("1.Entrar el joc de Buscamines");
         System.out.println("2.Sortir");
-        opcio =lector.nextInt();
+        opcio = lector.nextInt();
         return opcio;
     }
 
     public static void seleccionadificultat(){
+        boolean dificultatcert = false;
         int dificultat;
         System.out.println("Selecciona la dificultat");
         System.out.println("1.Facil");
@@ -38,12 +43,19 @@ do {
         System.out.println("3.Dificil");
         dificultat = lector.nextInt();
 
+        if (dificultat == 1 || dificultat == 2 || dificultat == 3){
+            dificultatcert = true;
+            }
+        else {
+                System.out.println("Has introduit una dificultat incorrecta");
+                }
+
         switch (dificultat){
             case 1:
-                taulerfacil();
+
             break;
             case 2:
-                taulermitja();
+
             break;
             case 3:
 
@@ -51,31 +63,30 @@ do {
         }
         }
 
-        public static void taulerfacil(){
-            int[][] taulerfacil = new int[4][4];
-            for (int i = 0; i < taulerfacil.length; i++) {
-                for (int j = 0; j < taulerfacil[i].length; j++) {
-                    taulerfacil[i][j] = (int) (Math.random() * 2);
-                }
-                for (int j = 0; j < taulerfacil[i].length; j++) {
-                    System.out.print(taulerfacil[i][j] + " ");
+        public static void taulellvuit(){
+            System.out.println("=========");
+            System.out.println("Buscamines");
+
+            System.out.println();
+            System.out.printf("%3s", "A");
+            System.out.printf("%3s", "B");
+            System.out.printf("%3s", "C");
+            System.out.printf("%3s", "D");
+            System.out.printf("%3s", "E");
+            System.out.println();
+            for (int i = 0; i < 5; i++) {
+                System.out.print(i + 1);
+                for (int j = 0; j < 5; j++) {
+                    System.out.printf("%3s", " - ");
                 }
                 System.out.println();
             }
+
+
         }
 
-        public static void taulermitja(){
-            int[][] taulermitja = new int[8][8];
-            for (int i = 0; i < taulermitja.length; i++) {
-                for (int j = 0; j < taulermitja[i].length; j++) {
-                    taulermitja[i][j] = (int) (Math.random() * 2);
-                }
-                for (int j = 0; j < taulermitja[i].length; j++) {
-                    System.out.print(taulermitja[i][j] + " ");
-                }
-                System.out.println();
-            }
-        }
+
+
 
 
 
