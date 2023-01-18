@@ -4,23 +4,29 @@ public class Principal {
 public static Scanner lector = new Scanner(System.in);
 
     public static void main(String[] args) {
-    int menu = menu();
+
     boolean sortir = false;
+do {
+    int menu = menu();
 
     switch (menu){
         case 1:
-        seleccionadificultat();
-
+            seleccionadificultat();break;
         case 2:
+            System.out.println("Gracies per haver jugat");
+            sortir=true;
+            break;
 
     }
+}while (!sortir);
+
     }
 
     public static int menu() {
         int opcio = 0;
         System.out.println("1.Entrar el joc de Buscamines");
         System.out.println("2.Sortir");
-        opcio = lector.nextInt();
+        opcio =lector.nextInt();
         return opcio;
     }
 
@@ -49,10 +55,12 @@ public static Scanner lector = new Scanner(System.in);
             int[][] taulerfacil = new int[4][4];
             for (int i = 0; i < taulerfacil.length; i++) {
                 for (int j = 0; j < taulerfacil[i].length; j++) {
-                    System.out.print(" * ");
+                    taulerfacil[i][j] = (int) (Math.random() * 2);
+                }
+                for (int j = 0; j < taulerfacil[i].length; j++) {
+                    System.out.print(taulerfacil[i][j] + " ");
                 }
                 System.out.println();
-
             }
         }
 
@@ -68,7 +76,6 @@ public static Scanner lector = new Scanner(System.in);
                 System.out.println();
             }
         }
-
 
 
 
