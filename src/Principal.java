@@ -1,6 +1,12 @@
 import java.util.Scanner;
 public class Principal {
 
+
+    class coordenades {
+        int lletres;
+        int numeros;
+    }
+
 public static Scanner lector = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -47,8 +53,8 @@ do {
             dificultatcert = true;
             }
         else {
-                System.out.println("Has introduit una dificultat incorrecta");
-                }
+            System.out.println("Has introduit una dificultat incorrecta");
+        }
 
         switch (dificultat){
             case 1:
@@ -81,6 +87,9 @@ do {
                 }
                 System.out.println();
             }
+
+
+
 
 
         }
