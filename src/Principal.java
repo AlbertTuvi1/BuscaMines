@@ -1,7 +1,6 @@
 import java.util.Scanner;
 public class Principal {
 
-
    static class  coordenades {
         int lletres;
         int numeros;
@@ -211,7 +210,7 @@ do {
 
         return coord;
     }
-    public static int convertirDificultatToMines(int dificultat) {
+    public static int convertirDificultatPerMines(int dificultat) {
         int mines = 0;
         switch (dificultat) {
             case 1:
@@ -229,7 +228,7 @@ do {
         }
         return mines;
     }
-    public static int minesRodejant(coordenades cordenada, int[][] taulellAmbMines) {
+    public static int minesAlVoltant(coordenades cordenada, int[][] taulellAmbMines) {
         int numero = cordenada.numeros;
         int lletra = cordenada.lletres;
         int count = 0;
@@ -384,7 +383,7 @@ do {
             return count;
         }
     }
-    public static void mostrarPantallaGuanyador(int[][] taulellAmbMines, int puntuacio) {
+    public static void mostrarGuanyador(int[][] taulellAmbMines, int puntuacio) {
 
         System.out.println("Molt bé, t'has passat el joc. ");
 
@@ -413,7 +412,7 @@ do {
         // Mostrem la puntuació:
         System.out.println("La puntuació ha sigut de: " + puntuacio);
     }
-    public static void mostrarPantallaPerdedor(int[][] taulellAmbMines, int numero, int lletra, int puntuacio) {
+    public static void mostrarPerdedor(int[][] taulellAmbMines, int numero, int lletra, int puntuacio) {
         System.out.println();
         System.out.printf("%3s", "A");
         System.out.printf("%3s", "B");
@@ -458,7 +457,7 @@ do {
 
         Scanner lector = new Scanner(System.in);
 
-        int mines = convertirDificultatToMines(dificultat);
+        int mines = convertirDificultatPerMines(dificultat);
 
         int puntuacio = 0;
         int jugades = 0;
@@ -489,7 +488,7 @@ do {
             }
             if (!jugadaAcabada) {
                 // Mirem quantes mines tenim al costat de la coordenada i actualitzem el -2 per el valor.
-                int minesVoltant = minesRodejant(coord, taulellAmbMines);
+                int minesVoltant = minesAlVoltant(coord, taulellAmbMines);
 
                 // Posem aquest valor al taulellDeMines:
                 taulellAmbMines[numero][lletra] = minesVoltant;
@@ -503,18 +502,12 @@ do {
         // Mirem si hem sortit del bucle perque hem guanyat o perdut.
         if (jugades == (25 - mines)) {
             System.out.println();
-            mostrarPantallaGuanyador(taulellAmbMines, puntuacio);
+            mostrarGuanyador(taulellAmbMines, puntuacio);
         } else {
-            mostrarPantallaPerdedor(taulellAmbMines, numero, lletra, puntuacio);
+            mostrarPerdedor(taulellAmbMines, numero, lletra, puntuacio);
         }
 
     }
-
-
-
-
-
-
     }
 
 
