@@ -60,19 +60,6 @@ do {
         else {
             System.out.println("Has introduit una dificultat incorrecta");
         }
-
-        switch (dificultat){
-            case 1:;
-
-
-            break;
-            case 2:
-
-            break;
-            case 3:
-
-            break;
-        }
             return dificultat;
         }
 
@@ -223,7 +210,6 @@ do {
                 mines = 7;
                 break;
             default:
-
                 System.out.println("Quantitat de mines no correcte!");
         }
         return mines;
@@ -509,8 +495,3 @@ do {
 
     }
     }
-
-
-
-
-
