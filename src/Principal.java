@@ -14,7 +14,7 @@ public static Scanner lector = new Scanner(System.in);
 
     taulellvuit();
 
-    int dificultat=0;
+    int dificultat=menu();
 
     int [][]taulellMines=crearTaulell(dificultat);
 
@@ -65,8 +65,9 @@ do {
         }
 
         public static void taulellvuit(){
-            System.out.println("=========");
-            System.out.println("Buscamines");
+
+            System.out.println("BUSCAMINES");
+            System.out.println("=================");
 
             System.out.println();
             System.out.printf("%3s", "A");
@@ -74,6 +75,7 @@ do {
             System.out.printf("%3s", "C");
             System.out.printf("%3s", "D");
             System.out.printf("%3s", "E");
+
             System.out.println();
             for (int i = 0; i < 5; i++) {
                 System.out.print(i + 1);
@@ -82,6 +84,7 @@ do {
                 }
                 System.out.println();
             }
+            System.out.println("=================");
         }
 
         public static int [][] crearTaulell(int dificultat)
@@ -210,8 +213,7 @@ do {
             case 3:
                 mines = 7;
                 break;
-            default:
-                System.out.println("Quantitat de mines no correcte!");
+
         }
         return mines;
     }
