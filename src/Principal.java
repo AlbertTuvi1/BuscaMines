@@ -14,7 +14,7 @@ public static Scanner lector = new Scanner(System.in);
 
     taulellvuit();
 
-    int dificultat=menu();
+    int dificultat=0;
 
     int [][]taulellMines=crearTaulell(dificultat);
 
@@ -53,6 +53,7 @@ do {
         System.out.println("2.Mitja");
         System.out.println("3.Dificil");
         dificultat = lector.nextInt();
+
 
         if (dificultat == 1 || dificultat == 2 || dificultat == 3){
             dificultatcert = true;
