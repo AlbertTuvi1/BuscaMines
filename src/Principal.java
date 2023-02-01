@@ -1,41 +1,35 @@
 import java.util.Scanner;
+
 public class Principal {
 
-   static class  coordenades {
+    static class coordenades {
         int lletres;
         int numeros;
     }
 
-public static Scanner lector = new Scanner(System.in);
+    public static Scanner lector = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-    boolean sortir = false;
+        boolean sortir = false;
 
-    taulellvuit();
-
-    int dificultat=menu();
-
-    int [][]taulellMines=crearTaulell(dificultat);
-
-do {
-    int opcio=menu();
+        taulellvuit();
+        int dificultat = menu();
+        int[][] taulellMines = crearTaulell(dificultat);
 
 
-    switch (opcio){
-        case 1:
-            jugarPartida(dificultat,taulellMines);
-            break;
-        case 2:
-            System.out.println("Gracies per haver jugat");
-            sortir=true;
-            break;
-
+        switch (dificultat) {
+            case 1:
+                jugarPartida(dificultat, taulellMines);
+                break;
+            case 2:
+                while (!sortir) {
+                    sortir = true;
+                    System.out.println("Adeu");
+                    break;
+                }
+        }
     }
-}while (!sortir);
-
-    }
-
     public static int menu() {
         int opcio = 0;
         System.out.println("1.Entrar el joc de Buscamines");
@@ -44,98 +38,107 @@ do {
         return opcio;
     }
 
-    public static int seleccionadificultat(){
-        int dificultat=0;
+    public static int seleccionadificultat() {
+        int dificultat = 0;
+        int opcio = 0;
         boolean dificultatcert = false;
+
 
         System.out.println("Selecciona la dificultat");
         System.out.println("1.Facil");
         System.out.println("2.Mitja");
         System.out.println("3.Dificil");
         dificultat = lector.nextInt();
+        opcio = dificultat;
+        System.out.println("Has seleccionat la dificultat " + dificultat);
 
-
-        if (dificultat == 1 || dificultat == 2 || dificultat == 3){
-            dificultatcert = true;
+        while (!dificultatcert) {
+            if (opcio == 1 || opcio == 2 || opcio == 3) {
+                dificultatcert = true;
+            } else {
+                System.out.println("Selecciona una dificultat valida");
+                System.out.println("1.Facil");
+                System.out.println("2.Mitja");
+                System.out.println("3.Dificil");
+                dificultat = lector.nextInt();
+                opcio = dificultat;
             }
-        else {
-            System.out.println("Has introduit una dificultat incorrecta");
         }
-            return dificultat;
-        }
+        return dificultat;
+    }
 
-        public static void taulellvuit(){
+    public static void taulellvuit() {
 
-            System.out.println("BUSCAMINES");
-            System.out.println("=================");
+        System.out.println("BUSCAMINES");
+        System.out.println("=================");
 
+        System.out.println();
+        System.out.printf("%3s", "A");
+        System.out.printf("%3s", "B");
+        System.out.printf("%3s", "C");
+        System.out.printf("%3s", "D");
+        System.out.printf("%3s", "E");
+
+        System.out.println();
+        for (int i = 0; i < 5; i++) {
+            System.out.print(i + 1);
+            for (int j = 0; j < 5; j++) {
+                System.out.printf("%3s", " - ");
+            }
             System.out.println();
-            System.out.printf("%3s", "A");
-            System.out.printf("%3s", "B");
-            System.out.printf("%3s", "C");
-            System.out.printf("%3s", "D");
-            System.out.printf("%3s", "E");
-
-            System.out.println();
-            for (int i = 0; i < 5; i++) {
-                System.out.print(i + 1);
-                for (int j = 0; j < 5; j++) {
-                    System.out.printf("%3s", " - ");
-                }
-                System.out.println();
-            }
-            System.out.println("=================");
         }
+        System.out.println("=================");
+    }
 
-        public static int [][] crearTaulell(int dificultat)
-        {
-        int mines=seleccionadificultat();
-        final int MAX_NUMERO_RAND=5;
-        int resultatRandom_I=0;
-        int resultatRandom_J=0;
-        int coordenanMines=0;
+    public static int[][] crearTaulell(int dificultat) {
+        int mines = seleccionadificultat();
+        final int MAX_NUMERO_RAND = 5;
+        int resultatRandom_I = 0;
+        int resultatRandom_J = 0;
+        int coordenanMines = 0;
 
-        int [][] posicioMines=new int[mines][2];
-        int [][] taulellAmbMines=new int[5][5];
+        int[][] posicioMines = new int[mines][2];
+        int[][] taulellAmbMines = new int[5][5];
 
-        boolean minesOK=false;
-        int count=0;
-        while (!minesOK){
-            resultatRandom_I=(int) (Math.random()*MAX_NUMERO_RAND);
-            resultatRandom_J=(int) (Math.random()*MAX_NUMERO_RAND);
-            boolean posicio_I_OK=false;
-            boolean posicio_J_OK=false;
+        boolean minesOK = false;
+        int count = 0;
+        while (!minesOK) {
+            resultatRandom_I = (int) (Math.random() * MAX_NUMERO_RAND);
+            resultatRandom_J = (int) (Math.random() * MAX_NUMERO_RAND);
+            boolean posicio_I_OK = false;
+            boolean posicio_J_OK = false;
 
-            for (int i=0; i<posicioMines.length;i++){
-                if ((resultatRandom_I ==posicioMines[i][0] && (resultatRandom_J == posicioMines [i][1]))){
-                    posicio_I_OK=true;
-                    posicio_J_OK=true;
+            for (int i = 0; i < posicioMines.length; i++) {
+                if ((resultatRandom_I == posicioMines[i][0] && (resultatRandom_J == posicioMines[i][1]))) {
+                    posicio_I_OK = true;
+                    posicio_J_OK = true;
                 }
             }
-            if (posicio_I_OK && posicio_J_OK){
+            if (posicio_I_OK && posicio_J_OK) {
                 continue;
 
-            }else {
-                posicioMines[coordenanMines][0]=resultatRandom_I;
-                posicioMines[coordenanMines][1]=resultatRandom_J;
+            } else {
+                posicioMines[coordenanMines][0] = resultatRandom_I;
+                posicioMines[coordenanMines][1] = resultatRandom_J;
                 coordenanMines++;
                 count++;
-                taulellAmbMines[resultatRandom_I][resultatRandom_J]=-1;
-                if (count ==mines){
+                taulellAmbMines[resultatRandom_I][resultatRandom_J] = -1;
+                if (count == mines) {
 
-                    minesOK=true;
+                    minesOK = true;
                 }
             }
         }
-        for (int i=0;i<taulellAmbMines.length;i++){
-            for (int j=0;j<taulellAmbMines.length;j++){
-                if (taulellAmbMines[i][j] != -1){
-                    taulellAmbMines[i][j]=-2;
+        for (int i = 0; i < taulellAmbMines.length; i++) {
+            for (int j = 0; j < taulellAmbMines.length; j++) {
+                if (taulellAmbMines[i][j] != -1) {
+                    taulellAmbMines[i][j] = -2;
                 }
             }
         }
         return taulellAmbMines;
-        }
+    }
+
     public static void mostrarTaulell(int[][] taulellAmbMines) {
         System.out.println();
 
@@ -162,7 +165,6 @@ do {
     }
 
     public static coordenades demanarCoordenada() {
-        Scanner lector = new Scanner(System.in);
         coordenades coord = new coordenades();
         String entrada = "";
         boolean coordenada_OK = false;
@@ -191,7 +193,7 @@ do {
                 System.out.println("Error!");
                 System.out.println("Has d'entrar una coordenada correcte.");
                 System.out.println("Consisteix en un número i una lletra majúscula sense espais.");
-                System.out.println("Exemple: 3E - (1,2,3,4,5)(A,B,C,D,E)");
+                System.out.println("Exemple: 1A - (1,2,3,4,5)(A,B,C,D,E)");
                 System.out.println();
             }
         }
@@ -201,6 +203,7 @@ do {
 
         return coord;
     }
+
     public static int convertirDificultatPerMines(int dificultat) {
         int mines = 0;
         switch (dificultat) {
@@ -217,6 +220,7 @@ do {
         }
         return mines;
     }
+
     public static int minesAlVoltant(coordenades cordenada, int[][] taulellAmbMines) {
         int numero = cordenada.numeros;
         int lletra = cordenada.lletres;
@@ -372,6 +376,7 @@ do {
             return count;
         }
     }
+
     public static void mostrarGuanyador(int[][] taulellAmbMines, int puntuacio) {
 
         System.out.println("Molt bé, t'has passat el joc. ");
@@ -401,6 +406,7 @@ do {
         // Mostrem la puntuació:
         System.out.println("La puntuació ha sigut de: " + puntuacio);
     }
+
     public static void mostrarPerdedor(int[][] taulellAmbMines, int numero, int lletra, int puntuacio) {
         System.out.println();
         System.out.printf("%3s", "A");
@@ -425,7 +431,7 @@ do {
                     } else {
                         // Mostrem també el número de mines que hi havien al voltant un cop hem perdut.
                         if (taulellAmbMines[i][j] == -2) {
-                            System.out.print(" " +"-" + " ");
+                            System.out.print(" " + "-" + " ");
                             // vol dir que hem tirat allà i per tant hem de mostrar el número de mines que hi ha hal voltant.
                         } else {
                             System.out.print(" " + taulellAmbMines[i][j] + " ");
@@ -442,9 +448,8 @@ do {
         System.out.println("Punts aconseguits: " + puntuacio);
         System.out.println();
     }
-    public static void jugarPartida(int dificultat, int[][] taulellAmbMines) {
 
-        Scanner lector = new Scanner(System.in);
+    public static void jugarPartida(int dificultat, int[][] taulellAmbMines) {
 
         int mines = convertirDificultatPerMines(dificultat);
 
@@ -497,4 +502,4 @@ do {
         }
 
     }
-    }
+}
