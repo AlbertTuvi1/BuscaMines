@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Principal {
 
+    //hola
     static class coordenades {
         int lletres;
         int numeros;
